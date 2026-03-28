@@ -1,0 +1,520 @@
+:root {
+    --archon-primary: #143d91;
+    --archon-primary-dark: #0f2f70;
+    --archon-primary-light: #1d4fb8;
+    --archon-bg: #f4f7fb;
+    --archon-surface: #ffffff;
+    --archon-border: #e6ebf2;
+    --archon-text: #1f2937;
+    --archon-muted: #6b7280;
+
+    --archon-success: #198754;
+    --archon-success-soft: #e8f7ef;
+
+    --archon-danger: #dc3545;
+    --archon-danger-soft: #fdecee;
+
+    --archon-warning: #f59e0b;
+    --archon-warning-soft: #fff4da;
+
+    --archon-info: #0d6efd;
+    --archon-info-soft: #eaf2ff;
+
+    --archon-shadow: 0 10px 30px rgba(15, 23, 42, .08);
+    --archon-radius: 18px;
+
+    --sidebar-width: 278px;
+    --topbar-height: 76px;
+}
+
+* {
+    box-sizing: border-box;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: Arial, Tahoma, sans-serif;
+    background: var(--archon-bg);
+    color: var(--archon-text);
+}
+
+a {
+    text-decoration: none;
+}
+
+.app-shell {
+    display: flex;
+    min-height: 100vh;
+}
+
+.archon-sidebar {
+    width: var(--sidebar-width);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: linear-gradient(180deg, var(--archon-primary) 0%, var(--archon-primary-dark) 100%);
+    color: #fff;
+    z-index: 1030;
+    overflow-y: auto;
+    box-shadow: var(--archon-shadow);
+}
+
+.archon-sidebar-brand {
+    padding: 24px 22px 18px;
+    border-bottom: 1px solid rgba(255,255,255,.08);
+}
+
+.archon-sidebar-brand .brand-title {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1;
+    margin-bottom: 4px;
+    color: #fff;
+}
+
+.archon-sidebar-brand .brand-subtitle {
+    font-size: .9rem;
+    color: rgba(255,255,255,.78);
+}
+
+.archon-sidebar-nav {
+    padding: 14px 12px 30px;
+}
+
+.archon-sidebar-section {
+    margin-bottom: 10px;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+.archon-sidebar-toggle {
+    width: 100%;
+    background: transparent;
+    color: #fff;
+    border: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 14px 14px;
+    border-radius: 14px;
+    transition: .25s ease;
+    font-weight: 700;
+}
+
+.archon-sidebar-toggle:hover,
+.archon-sidebar-toggle[aria-expanded="true"] {
+    background: rgba(255,255,255,.08);
+}
+
+.archon-sidebar-toggle .label-wrap {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.archon-submenu {
+    padding: 4px 0 8px;
+}
+
+.archon-submenu a {
+    display: block;
+    color: rgba(255,255,255,.88);
+    padding: 10px 14px 10px 44px;
+    margin: 4px 0;
+    border-radius: 12px;
+    transition: .25s ease;
+    font-size: .95rem;
+}
+
+.archon-submenu a:hover,
+.archon-submenu a.active {
+    background: rgba(255,255,255,.12);
+    color: #fff;
+    transform: translateX(-2px);
+}
+
+.archon-main {
+    width: 100%;
+    margin-right: var(--sidebar-width);
+    min-height: 100vh;
+}
+
+.archon-topbar {
+    height: var(--topbar-height);
+    position: sticky;
+    top: 0;
+    z-index: 1020;
+    background: linear-gradient(90deg, var(--archon-primary-dark), var(--archon-primary));
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 26px;
+    box-shadow: var(--archon-shadow);
+}
+
+.archon-topbar-title {
+    font-size: 1.35rem;
+    font-weight: 800;
+    margin: 0;
+}
+
+.archon-topbar-sub {
+    font-size: .9rem;
+    color: rgba(255,255,255,.78);
+    margin-top: 2px;
+}
+
+.archon-topbar-actions {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.archon-search-box {
+    min-width: 280px;
+    max-width: 360px;
+    position: relative;
+}
+
+.archon-search-box input {
+    width: 100%;
+    border: 0;
+    border-radius: 12px;
+    padding: 12px 16px 12px 42px;
+    outline: none;
+    background: rgba(255,255,255,.14);
+    color: #fff;
+}
+
+.archon-search-box input::placeholder {
+    color: rgba(255,255,255,.7);
+}
+
+.archon-search-box i {
+    position: absolute;
+    left: 14px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: rgba(255,255,255,.75);
+}
+
+.archon-user-chip {
+    background: rgba(255,255,255,.12);
+    border: 1px solid rgba(255,255,255,.08);
+    border-radius: 14px;
+    padding: 10px 14px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.archon-user-chip .name {
+    font-weight: 700;
+    line-height: 1.1;
+}
+
+.archon-user-chip .role {
+    font-size: .82rem;
+    color: rgba(255,255,255,.75);
+}
+
+.archon-logout-btn {
+    background: #fff;
+    color: var(--archon-primary);
+    border: 0;
+    border-radius: 12px;
+    padding: 10px 14px;
+    font-weight: 700;
+}
+
+.archon-content {
+    padding: 28px;
+}
+
+.archon-card,
+.card {
+    border: 1px solid var(--archon-border);
+    border-radius: var(--archon-radius);
+    background: var(--archon-surface);
+    box-shadow: var(--archon-shadow);
+    overflow: hidden;
+}
+
+.archon-card-body,
+.card .card-body {
+    padding: 22px;
+}
+
+.archon-section-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    margin: 0 0 16px;
+    color: var(--archon-text);
+}
+
+.archon-stats-grid {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 18px;
+    margin-bottom: 24px;
+}
+
+.archon-stat-card {
+    border-radius: 20px;
+    padding: 22px;
+    color: #fff;
+    box-shadow: var(--archon-shadow);
+    position: relative;
+    overflow: hidden;
+    min-height: 138px;
+}
+
+.archon-stat-card::after {
+    content: '';
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    left: -20px;
+    bottom: -30px;
+    border-radius: 50%;
+    background: rgba(255,255,255,.08);
+}
+
+.stat-primary { background: linear-gradient(135deg, #143d91, #1e56c5); }
+.stat-success { background: linear-gradient(135deg, #198754, #24a86a); }
+.stat-danger  { background: linear-gradient(135deg, #dc3545, #f05a68); }
+.stat-warning { background: linear-gradient(135deg, #d97706, #f59e0b); }
+.stat-info    { background: linear-gradient(135deg, #0d6efd, #38bdf8); }
+.stat-dark    { background: linear-gradient(135deg, #111827, #374151); }
+
+.archon-stat-label {
+    font-size: .98rem;
+    font-weight: 700;
+    margin-bottom: 12px;
+    opacity: .96;
+}
+
+.archon-stat-value {
+    font-size: 2rem;
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: 10px;
+}
+
+.archon-stat-meta {
+    font-size: .9rem;
+    opacity: .88;
+}
+
+.archon-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.archon-grid-wide {
+    display: grid;
+    grid-template-columns: 1.35fr 1fr;
+    gap: 20px;
+}
+
+.archon-chart-wrap {
+    position: relative;
+    height: 320px;
+}
+
+.archon-cashbox-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    margin-bottom: 24px;
+}
+
+.archon-cashbox-card {
+    background: #fff;
+    border: 1px solid var(--archon-border);
+    border-radius: 18px;
+    padding: 18px;
+    box-shadow: var(--archon-shadow);
+}
+
+.archon-cashbox-name {
+    font-size: 1rem;
+    font-weight: 800;
+    margin-bottom: 8px;
+    color: var(--archon-primary-dark);
+}
+
+.archon-cashbox-balance {
+    font-size: 1.4rem;
+    font-weight: 800;
+    color: var(--archon-text);
+}
+
+.archon-cashbox-balance.good { color: var(--archon-info); }
+.archon-cashbox-balance.low { color: var(--archon-warning); }
+.archon-cashbox-balance.zero { color: var(--archon-danger); }
+
+.table {
+    margin-bottom: 0;
+}
+
+.table thead th {
+    background: linear-gradient(90deg, var(--archon-primary-dark), var(--archon-primary));
+    color: #fff;
+    border: 0;
+    font-size: .92rem;
+    vertical-align: middle;
+    white-space: nowrap;
+}
+
+.table > :not(caption) > * > * {
+    padding: .9rem .85rem;
+}
+
+.table tbody tr:hover {
+    background: #f8fbff;
+}
+
+.form-control,
+.form-select {
+    border-radius: 12px;
+    border: 1px solid #d9e2ef;
+    min-height: 46px;
+    box-shadow: none !important;
+}
+
+.form-control:focus,
+.form-select:focus {
+    border-color: var(--archon-primary-light);
+}
+
+.btn {
+    border-radius: 12px;
+    font-weight: 700;
+}
+
+.btn-primary {
+    background: var(--archon-primary);
+    border-color: var(--archon-primary);
+}
+
+.btn-primary:hover {
+    background: var(--archon-primary-dark);
+    border-color: var(--archon-primary-dark);
+}
+
+.btn-outline-primary {
+    color: var(--archon-primary);
+    border-color: var(--archon-primary);
+}
+
+.btn-outline-primary:hover {
+    color: #fff;
+    background: var(--archon-primary);
+    border-color: var(--archon-primary);
+}
+
+.btn-light {
+    background: #fff;
+    border: 1px solid var(--archon-border);
+}
+
+.alert {
+    border-radius: 14px;
+    border: 0;
+}
+
+.archon-badge-soft {
+    display: inline-block;
+    padding: 6px 10px;
+    border-radius: 999px;
+    font-size: .82rem;
+    font-weight: 700;
+}
+
+.archon-badge-warning {
+    background: var(--archon-warning-soft);
+    color: #8a6700;
+}
+
+.archon-badge-danger {
+    background: var(--archon-danger-soft);
+    color: #842029;
+}
+
+.archon-empty {
+    text-align: center;
+    color: var(--archon-muted);
+    padding: 18px 0;
+}
+
+.archon-footer-note {
+    text-align: center;
+    color: #8a94a6;
+    margin-top: 26px;
+    font-size: .95rem;
+}
+
+@media (max-width: 1200px) {
+    .archon-stats-grid,
+    .archon-cashbox-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .archon-grid-wide {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 991px) {
+    .archon-sidebar {
+        position: static;
+        width: 100%;
+        height: auto;
+    }
+
+    .archon-main {
+        margin-right: 0;
+    }
+
+    .app-shell {
+        flex-direction: column;
+    }
+
+    .archon-topbar {
+        position: static;
+        height: auto;
+        padding: 18px;
+        gap: 16px;
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .archon-topbar-actions {
+        justify-content: space-between;
+    }
+
+    .archon-search-box {
+        display: none;
+    }
+}
+
+@media (max-width: 768px) {
+    .archon-stats-grid,
+    .archon-cashbox-grid,
+    .archon-grid-2 {
+        grid-template-columns: 1fr;
+    }
+
+    .archon-content {
+        padding: 18px;
+    }
+}
