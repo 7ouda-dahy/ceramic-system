@@ -101,8 +101,10 @@
                 </button>
                 <div class="collapse show archon-submenu" id="menu-cashbox">
                     <a href="{{ route('cashbox.show', 'central') }}" class="{{ request()->is('cashbox/central') ? 'active' : '' }}">الخزنة المركزية</a>
-                    <a href="{{ route('cashbox.show', 'beni-ebeid') }}" class="{{ request()->is('cashbox/beni-ebeid') ? 'active' : '' }}">خزنة بني عبيد</a>
-                    <a href="{{ route('cashbox.show', 'fikriya') }}" class="{{ request()->is('cashbox/fikriya') ? 'active' : '' }}">خزنة الفكرية</a>
+<a href="{{ route('cashbox.show', 'bani-obeid') }}" 
+   class="{{ request()->is('cashbox/bani-obeid') ? 'active' : '' }}">
+   خزنة بني عبيد
+</a>                    <a href="{{ route('cashbox.show', 'fikriya') }}" class="{{ request()->is('cashbox/fikriya') ? 'active' : '' }}">خزنة الفكرية</a>
                 </div>
             </div>
 
