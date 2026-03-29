@@ -14,6 +14,7 @@ class DatabaseSeeder extends Seeder
             ['email' => 'admin@admin.com'],
             [
                 'name' => 'Admin',
+                'username' => 'admin', // 🔥 الحل هنا
                 'password' => Hash::make('12345678'),
             ]
         );
