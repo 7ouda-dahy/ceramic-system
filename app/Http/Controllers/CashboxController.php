@@ -24,7 +24,7 @@ class CashboxController extends Controller
                 $query->whereDate('created_at', today());
             } elseif ($request->filter === 'month') {
                 $query->whereMonth('created_at', now()->month)
-                      ->whereYear('created_at', now()->year);
+                    ->whereYear('created_at', now()->year);
             } elseif ($request->filter === 'custom') {
                 if ($request->filled('date_from')) {
                     $query->whereDate('created_at', '>=', $request->date_from);
@@ -44,16 +44,14 @@ class CashboxController extends Controller
             $search = trim($request->search);
             $query->where(function ($q) use ($search) {
                 $q->where('reason', 'like', "%{$search}%")
-                  ->orWhere('reference_code', 'like', "%{$search}%")
-                  ->orWhere('id', $search);
+                    ->orWhere('reference_code', 'like', "%{$search}%")
+                    ->orWhere('id', $search);
             });
         }
 
-        // نجيب الحركات بالأقدم أولًا علشان نحسب الرصيد التراكمي صح
         $transactionsAsc = $query->orderBy('created_at')->orderBy('id')->get();
 
         $openingBalance = $this->calculateOpeningBalance($cashbox, $transactionsAsc);
-
         $runningBalance = $openingBalance;
 
         foreach ($transactionsAsc as $transaction) {
@@ -66,7 +64,6 @@ class CashboxController extends Controller
             $transaction->balance_after = $runningBalance;
         }
 
-        // نعرضها بالأحدث أولًا بعد الحساب
         $transactions = $transactionsAsc->sortByDesc(function ($item) {
             return $item->created_at->timestamp . str_pad($item->id, 10, '0', STR_PAD_LEFT);
         })->values();
@@ -221,11 +218,7 @@ class CashboxController extends Controller
 
     private function resolveCashboxBySlug(string $slug): ?Cashbox
     {
-        return match ($slug) {
-            'central' => Cashbox::where('is_central', true)->first(),
-            'beni-ebeid' => Cashbox::where('name', 'like', '%بني عبيد%')->first(),
-            'fikriya' => Cashbox::where('name', 'like', '%الفكرية%')->first(),
-            default => null,
-        };
+        return Cashbox::where('slug', $slug)->first();
     }
 }
+
